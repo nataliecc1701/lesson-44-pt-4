@@ -13,6 +13,8 @@ function radixBucket(arr, power) {
         else buckets[0].push(val);
     }
     
+    // console.log("buckets:", buckets)
+    
     return {
         arr: [...buckets[0], ...buckets[1] ],
         hasLarge: (buckets[1].length > 0) ? true : false
@@ -25,6 +27,7 @@ function radixSort(arr) {
     let workingArray = [...arr]
     
     while (needToRepeat) {
+        // console.log(`iterating: power is ${i}`)
         const buckets = radixBucket(workingArray, i)
         workingArray = buckets.arr;
         needToRepeat = buckets.hasLarge;
